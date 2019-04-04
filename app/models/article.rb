@@ -12,13 +12,13 @@
 #
 
 class Article < ApplicationRecord
-  after_save :collect_metadata
+  after_create :collect_metadata
 
   validates_presence_of :url
 
   private
 
     def collect_metadata
-      # TODO: CALL JOB TO COLLECT METADATA
+      CollectMetadataJob.perform_now self
     end
 end
