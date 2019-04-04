@@ -16,6 +16,9 @@ class Article < ApplicationRecord
 
   validates_presence_of :url
 
+  has_many :article_tag
+  has_many :tags, through: :article_tag
+
   private
 
     def collect_metadata
