@@ -10,7 +10,7 @@ module ReadingList
         desc 'Return list of books'
         get do
           articles = Article.all
-          present articles
+          present articles, with: ReadingList::Entities::Article
         end
 
       end
